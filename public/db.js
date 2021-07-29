@@ -1,4 +1,4 @@
-let db;
+let dbBudgetDB;
 
 
 // create a new db request for a "BudgetDB" database.
@@ -8,6 +8,8 @@ request.onupgradeneeded = function (event) {
     // create object store called "BudgetStore" and set autoIncrement to true
     const db = event.target.result;
     const BudgetStore = db.createObjectStore("PendingDB", { autoIncrement: true });
+
+
 };
 
 request.onsuccess = function (event) {
@@ -43,7 +45,7 @@ function checkDatabase() {
     getAll.onsuccess = function () {
         console.log(getAll.result)
         if (getAll.result.length > 0) {
-            fetch('/api/transactions/bulk', {
+            fetch('/api/transaction/bulk', {
                 method: 'POST',
                 body: JSON.stringify(getAll.result),
                 headers: {
@@ -53,7 +55,7 @@ function checkDatabase() {
             })
                 .then((response) => response.json())
                 .then(() => {
-                    const transaction = db.transactions(["PendingDB"], "readwrite");
+                    const transaction = db.transaction(["PendingDB"], "readwrite");
                     const BudgetStore = transaction.objectStore("PendingDB")
                     BudgetStore.clear();
                     // if successful, open a transaction on your pending db
