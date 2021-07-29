@@ -2,7 +2,7 @@ let db;
 
 
 // create a new db request for a "BudgetDB" database.
-const request = indexedDB.open("budget", 1);
+const request = indexedDB.open("budgetdb", 1);
 
 request.onupgradeneeded = function (event) {
 
