@@ -1,14 +1,16 @@
-let dbBudgetDB;
+let db;
 
 
 // create a new db request for a "BudgetDB" database.
-const request = indexedDB.open("BudgetDB", 1);
+const request = indexedDB.open("budgetdb", 1);
 
 request.onupgradeneeded = function (event) {
-    // create object store called "BudgetStore" and set autoIncrement to true
-    const db = event.target.result;
-    const BudgetStore = db.createObjectStore("PendingDB", { autoIncrement: true });
 
+    const db = event.target.result;
+    if (db.objectStoreNames.length === 0) {
+        db.createObjectStore('transactions', { autoIncrement: true });
+        console.log('Object Store created!')
+    }
 
 };
 
@@ -22,25 +24,23 @@ request.onsuccess = function (event) {
 };
 
 request.onerror = function (event) {
+    console.log(`Request error: ${event.target.errorCode}`);
     // log error here
 };
 
 function saveRecord(record) {
-    const transaction = db.transaction(["PendingDB"], "readwrite");
-    const BudgetStore = transaction.objectStore("PendingDB")
-    BudgetStore.add(record);
+    const transaction = db.transaction(["transactions"], "readwrite");
+    const objectStore = transaction.objectStore('transactions');
+    objectStore.add(record);
     console.log(record);
 
 }
 
 function checkDatabase() {
 
-    const transaction = db.transaction(["PendingDB"], "readwrite");
-    const BudgetStore = transaction.objectStore("PendingDB")
-    const getAll = BudgetStore.getAll();
-    // open a transaction on your pending db
-    // access your pending object store
-    // get all records from store and set to a variable
+    const transaction = db.transaction(["transactions"], "readwrite");
+    const objectStore = transaction.objectStore("transactions")
+    const getAll = objectStore.getAll();
 
     getAll.onsuccess = function () {
         console.log(getAll.result)
@@ -55,12 +55,10 @@ function checkDatabase() {
             })
                 .then((response) => response.json())
                 .then(() => {
-                    const transaction = db.transaction(["PendingDB"], "readwrite");
-                    const BudgetStore = transaction.objectStore("PendingDB")
-                    BudgetStore.clear();
-                    // if successful, open a transaction on your pending db
-                    // access your pending object store
-                    // clear all items in your store
+                    const transaction = db.transaction(["transactions"], "readwrite");
+                    const objectStore = transaction.objectStore("transactions")
+                    objectStore.clear();
+
                 });
         }
     };
