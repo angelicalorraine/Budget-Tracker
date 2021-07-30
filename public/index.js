@@ -91,7 +91,7 @@ function populateChart() {
         pointBorderWidth: 5,
         pointHoverRadius: 5,
         pointHoverBorderWidth: 1,
-        pointRadius: 3,
+        pointRadius: 2,
 
         borderWidth: 4,
 
