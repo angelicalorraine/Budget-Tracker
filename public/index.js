@@ -79,7 +79,7 @@ function populateChart() {
     data: {
       labels,
       datasets: [{
-        label: "Total Over Time",
+
         fill: true,
         data,
         backgroundColor: gradientFill,
@@ -88,8 +88,8 @@ function populateChart() {
         pointBackgroundColor: gradientStroke,
         pointHoverBackgroundColor: gradientStroke,
         pointHoverBorderColor: gradientStroke,
-        pointBorderWidth: 10,
-        pointHoverRadius: 10,
+        pointBorderWidth: 5,
+        pointHoverRadius: 5,
         pointHoverBorderWidth: 1,
         pointRadius: 3,
 
