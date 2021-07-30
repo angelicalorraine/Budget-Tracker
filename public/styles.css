@@ -1,6 +1,6 @@
 body {
   font-size: 120%;
-  font-family: Arial;
+  font-family: Roboto;
 }
 
 button,
@@ -36,7 +36,6 @@ tr:nth-child(even) {
 
 .total {
   font-size: 150%;
-  text-decoration: underline;
 }
 
 .form {
@@ -81,6 +80,7 @@ button:active {
 }
 
 h3 {
+  font-size: 55px;
   font-family: Bebas Neue;
   color: white;
   text-shadow: 2px 2px 4px #000000b6;
