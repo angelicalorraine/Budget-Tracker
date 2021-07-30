@@ -66,3 +66,19 @@ button:active {
   box-shadow: none;
   transform: translateY(3px);
 }
+
+.navbar {
+  background: linear-gradient(
+    90deg,
+    rgba(9, 9, 121, 100),
+    rgba(6, 187, 223, 100)
+  ) !important;
+}
+
+.fa-comments-dollar {
+  color: white;
+}
+
+h3 {
+  font-family: Bebas Neue;
+}
