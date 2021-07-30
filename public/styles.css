@@ -68,10 +68,11 @@ button:active {
 }
 
 .navbar {
-  background: linear-gradient(
-    90deg,
-    rgba(9, 9, 121, 100),
-    rgba(6, 187, 223, 100)
+  background: rgb(238, 174, 202);
+  background: radial-gradient(
+    circle,
+    rgb(223, 131, 171) 0%,
+    rgba(148, 187, 233, 1) 100%
   ) !important;
 }
 
@@ -81,4 +82,6 @@ button:active {
 
 h3 {
   font-family: Bebas Neue;
+  color: white;
+  text-shadow: 2px 2px 4px #000000b6;
 }
