@@ -64,6 +64,16 @@ function populateChart() {
 
   const ctx = document.getElementById("myChart").getContext("2d");
 
+  var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
+  gradientStroke.addColorStop(0, "rgba(148, 187, 233)");
+  gradientStroke.addColorStop(1, "rgba(223, 131, 171)");
+
+
+  var gradientFill = ctx.createLinearGradient(500, 0, 100, 0);
+  gradientFill.addColorStop(0, "rgba(223, 131, 171, 0.6)");
+  gradientFill.addColorStop(1, "rgba(148, 187, 233, 0.6)");
+
+
   myChart = new Chart(ctx, {
     type: 'line',
     data: {
@@ -71,8 +81,21 @@ function populateChart() {
       datasets: [{
         label: "Total Over Time",
         fill: true,
-        backgroundColor: "#6666ff",
-        data
+        data,
+        backgroundColor: gradientFill,
+        borderColor: gradientStroke,
+        pointBorderColor: gradientStroke,
+        pointBackgroundColor: gradientStroke,
+        pointHoverBackgroundColor: gradientStroke,
+        pointHoverBorderColor: gradientStroke,
+        pointBorderWidth: 10,
+        pointHoverRadius: 10,
+        pointHoverBorderWidth: 1,
+        pointRadius: 3,
+
+        borderWidth: 4,
+
+
       }]
     }
   });
